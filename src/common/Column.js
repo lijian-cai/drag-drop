@@ -16,7 +16,7 @@ const Header = styled.div`
   display: flex;
   height: 40px;
   box-sizing: border-box;
-  padding: 5px 10px;
+  padding: 10px 10px;
   align-items: center;
 `;
 
@@ -63,10 +63,9 @@ const Wrapper = styled.div`
   }
 `;
 
-export default function Column({ title, editTitle }) {
+export default function Column({ id, title, onTitleEdit }) {
   const [isEditing, setIsEditing] = useState(false);
 
-  console.log(isEditing);
   return (
     <Container>
       <Header>
@@ -74,9 +73,9 @@ export default function Column({ title, editTitle }) {
           {isEditing ? (
             <Wrapper flex="8">
               <Input
-                name="title"
+                name={`${id}-${title}`}
                 value={title}
-                onChange={editTitle}
+                onChange={(e) => onTitleEdit(e, id)}
                 onBlur={() => setIsEditing(false)}
               />
             </Wrapper>

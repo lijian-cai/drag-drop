@@ -1,5 +1,5 @@
 export const INITIAL_COLUMNS = [
-  { title: "To Do" },
-  { title: "Doing" },
-  { title: "Done" },
+  { id: 1, title: "To Do" },
+  { id: 2, title: "Doing" },
+  { id: 3, title: "Done" },
 ];
