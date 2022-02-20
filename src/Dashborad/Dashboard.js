@@ -15,7 +15,7 @@ export default function Dashboard() {
   return (
     <Container>
       {columns.map((column, index) => (
-        <Column key={index} title={column.title} />
+        <Column key={index} title={column.title} editTitle={() => {}} />
       ))}
     </Container>
   );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import Input from "./Input";
@@ -20,14 +20,19 @@ const Header = styled.div`
   align-items: center;
 `;
 
-const Title = styled.h4`
+const Title = styled.div`
+  flex: ${(props) => props.flex || "1"};
+`;
+
+const Text = styled.h4`
   font-weight: 600;
+  padding-left: 10px;
 `;
 
 const Footer = styled.div`
   display: flex;
   height: 40px;
-  padding: 5px 10px 10px 10px;
+  padding: 5px 10px 10px 15px;
   box-sizing: border-box;
   align-items: center;
 `;
@@ -45,12 +50,41 @@ const Link = styled.a`
   }
 `;
 
-export default function Column({ title }) {
+const Wrapper = styled.div`
+  flex: ${(props) => props.flex || "1"};
+  padding: 5px;
+  box-sizing: border-box;
+
+  & > input {
+    width: 95%;
+    padding: 5px;
+    border-color: #007ac0;
+    font-weight: 600;
+  }
+`;
+
+export default function Column({ title, editTitle }) {
+  const [isEditing, setIsEditing] = useState(false);
+
+  console.log(isEditing);
   return (
     <Container>
       <Header>
-        <Title>{title}</Title>
-        <Input name="title" value={title} onChange={()=>{}} />
+        <Title flex="8">
+          {isEditing ? (
+            <Wrapper flex="8">
+              <Input
+                name="title"
+                value={title}
+                onChange={editTitle}
+                onBlur={() => setIsEditing(false)}
+              />
+            </Wrapper>
+          ) : (
+            <Text onClick={() => setIsEditing(!isEditing)}>{title}</Text>
+          )}
+        </Title>
+        <Link center={true}>...</Link>
       </Header>
       <Footer>
         <Link flex="8">+ Add a card</Link>
