@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 import Input from "./Input";
+import CardToAdd from "./CardToAdd";
 
 const Container = styled.div`
+  display: flex;
+  flex-direction: column;
   background-color: #ebecf0;
-  max-width: 272px;
+  min-width: 272px;
   width: 272px;
   margin: 0px 5px;
   box-sizing: border-box;
@@ -65,6 +68,7 @@ const Wrapper = styled.div`
 
 export default function Column({ id, title, onTitleEdit }) {
   const [isEditing, setIsEditing] = useState(false);
+  const [isAdding, setIsAdding] = useState(false);
 
   return (
     <Container>
@@ -85,10 +89,16 @@ export default function Column({ id, title, onTitleEdit }) {
         </Title>
         <Link center={true}>...</Link>
       </Header>
-      <Footer>
-        <Link flex="8">+ Add a card</Link>
-        <Link center={true}>...</Link>
-      </Footer>
+      {isAdding ? (
+        <CardToAdd />
+      ) : (
+        <Footer>
+          <Link flex="8" onClick={() => setIsAdding(true)}>
+            + Add a card
+          </Link>
+          <Link center={true}>...</Link>
+        </Footer>
+      )}
     </Container>
   );
 }
