@@ -90,7 +90,10 @@ export default function Column({ id, title, onTitleEdit }) {
         <Link center={true}>...</Link>
       </Header>
       {isAdding ? (
-        <CardToAdd />
+        <CardToAdd
+          onClose={() => setIsAdding(false)}
+          placeholder="Enter a title for this card..."
+        />
       ) : (
         <Footer>
           <Link flex="8" onClick={() => setIsAdding(true)}>

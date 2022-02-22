@@ -12,8 +12,8 @@ import { INITIAL_COLUMNS } from "./dashboard.data";
 
 const Container = styled.div`
   display: flex;
-  align-items:flex-start;
-  align-content:flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
   width: 100%;
   height: 100%;
   padding: 30px 5px;
@@ -59,7 +59,12 @@ export default function Dashboard() {
         />
       ))}
       {isAdding ? (
-        <CardToAdd />
+        <CardToAdd
+          bgColor={"#ebecf0"}
+          onClose={() => setIsAdding(false)}
+          placeholder="Enter list title..."
+          name="add-list"
+        />
       ) : (
         <Link onClick={() => setIsAdding(true)}>+ Add another list</Link>
       )}
