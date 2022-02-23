@@ -56,6 +56,11 @@ export default function Dashboard() {
     setColumns(updateArrayOfObj(columns, id, column));
   };
 
+  const onColumnAdd = (title) => {
+    const newColumn = { id: columns.length + 1, title: title };
+    setColumns([...columns, newColumn]);
+  };
+
   return (
     <Container>
       {columns.map((column) => (
@@ -71,6 +76,7 @@ export default function Dashboard() {
           <CardToAdd
             bgColor={"#ebecf0"}
             onClose={() => setIsAdding(false)}
+            onClick={onColumnAdd}
             placeholder="Enter list title..."
             name="add-list"
           />

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Input from "./Input";
 
@@ -85,22 +85,41 @@ const CloseLink = styled.a`
   }
 `;
 
-export default function CardToAdd({ name, bgColor, placeholder, onClose }) {
+export default function CardToAdd({
+  name,
+  bgColor,
+  placeholder,
+  onClose,
+  onClick,
+}) {
+  const [title, setTitle] = useState("");
+
+  const handleAdd = () => {
+    onClick(title);
+    setTitle("");
+  };
+
   return (
     <Container bgColor={bgColor}>
       {name === "add-list" ? (
         <InputWrapper>
-          <Input placeholder={placeholder} />
+          <Input
+            placeholder={placeholder}
+            onChange={(e) => setTitle(e.target.value)}
+            value={title}
+          />
         </InputWrapper>
       ) : (
         <StyledTextarea
           name={name}
+          value={title}
           placeholder={placeholder}
           contentEditable={true}
+          onInput={(e) => setTitle(e.target.innerHTML)}
         />
       )}
       <Action>
-        <AddLink>Add Card</AddLink>
+        <AddLink onClick={handleAdd}>Add Card</AddLink>
         <CloseLink onClick={onClose}>X</CloseLink>
       </Action>
     </Container>

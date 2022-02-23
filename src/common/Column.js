@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
+import Card from "./Card";
 import Input from "./Input";
 import CardToAdd from "./CardToAdd";
 
@@ -69,6 +70,13 @@ const Wrapper = styled.div`
 export default function Column({ id, title, onTitleEdit }) {
   const [isEditing, setIsEditing] = useState(false);
   const [isAdding, setIsAdding] = useState(false);
+  const [cards, setCards] = useState([]);
+
+  const onCardAdd = (title) => {
+    const newCard = { id: cards.length + 1, title: title };
+    setCards([...cards, newCard]);
+    setIsAdding(false);
+  };
 
   return (
     <Container>
@@ -89,9 +97,13 @@ export default function Column({ id, title, onTitleEdit }) {
         </Title>
         <Link center={true}>...</Link>
       </Header>
+      {cards.map((card) => (
+        <Card key={card.id} title={card.title} />
+      ))}
       {isAdding ? (
         <CardToAdd
           onClose={() => setIsAdding(false)}
+          onClick={onCardAdd}
           placeholder="Enter a title for this card..."
         />
       ) : (
