@@ -19,6 +19,14 @@ const Container = styled.div`
   padding: 30px 5px;
 `;
 
+const Wrapper = styled.div`
+  min-width: 272px;
+  width: 272px;
+  margin: 0px 5px;
+  box-sizing: border-box;
+  border-radius: 3px;
+`;
+
 const Link = styled.a`
   display: block;
   min-width: 272px;
@@ -59,12 +67,14 @@ export default function Dashboard() {
         />
       ))}
       {isAdding ? (
-        <CardToAdd
-          bgColor={"#ebecf0"}
-          onClose={() => setIsAdding(false)}
-          placeholder="Enter list title..."
-          name="add-list"
-        />
+        <Wrapper>
+          <CardToAdd
+            bgColor={"#ebecf0"}
+            onClose={() => setIsAdding(false)}
+            placeholder="Enter list title..."
+            name="add-list"
+          />
+        </Wrapper>
       ) : (
         <Link onClick={() => setIsAdding(true)}>+ Add another list</Link>
       )}

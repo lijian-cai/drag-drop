@@ -16,6 +16,22 @@ const Action = styled.div`
   align-items: center;
 `;
 
+const InputWrapper = styled.div`
+  box-sizing: border-box;
+  margin-bottom: 5px;
+  
+  & > input {
+    width: 92%;
+    padding: 10px;
+    border-radius: 3px;
+    border: 0;
+    box-shadow: inset 0 0 0 2px #0079bf;
+    font-size: 14px;
+    letter-spacing: 0px;
+    font-weight: 400;
+  }
+`;
+
 const StyledTextarea = styled.div`
   background-color: white;
   min-height: 54px;
@@ -65,7 +81,9 @@ export default function CardToAdd({ name, bgColor, placeholder, onClose }) {
   return (
     <Container bgColor={bgColor}>
       {name === "add-list" ? (
-        <Input />
+        <InputWrapper>
+          <Input placeholder={placeholder} />
+        </InputWrapper>
       ) : (
         <StyledTextarea
           name={name}

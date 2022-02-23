@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Input({ name, value, onChange, onBlur }) {
+export default function Input({ name, value, onChange, onBlur, placeholder }) {
   return (
     <input
       onBlur={onBlur}
@@ -8,6 +8,7 @@ export default function Input({ name, value, onChange, onBlur }) {
       name={name}
       value={value}
       onChange={onChange}
+      placeholder={placeholder}
       autoFocus
     />
   );
