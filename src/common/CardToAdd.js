@@ -19,7 +19,7 @@ const Action = styled.div`
 const InputWrapper = styled.div`
   box-sizing: border-box;
   margin-bottom: 5px;
-  
+
   & > input {
     width: 92%;
     padding: 10px;
@@ -50,6 +50,14 @@ const StyledTextarea = styled.div`
   white-space: pre-wrap;
   overflow-wrap: break-word;
   outline: 0px solid transparent;
+
+  // placeholder for content editable div
+  &:empty:before {
+    content: attr(placeholder);
+    display: block;
+    height: 100%;
+    color: #808080;
+  }
 `;
 
 const AddLink = styled.a`
