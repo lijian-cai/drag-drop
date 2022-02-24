@@ -13,6 +13,7 @@ const Container = styled.a`
   border-radius: 3px;
   box-shadow: 0 1px 0 #091e4240;
   cursor: pointer;
+  word-break: break-all;
 
   &:hover {
     background-color: #f4f4f4;
