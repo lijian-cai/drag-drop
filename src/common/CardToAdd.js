@@ -99,6 +99,15 @@ export default function CardToAdd({
     setTitle("");
   };
 
+  const onKeyPress = (e) => {
+    // Press Enter add new card
+    if (e.charCode === 13 && title) {
+      handleAdd();
+    } else if (e.charCode === 13 && !title) {
+      e.preventDefault();
+    }
+  };
+
   return (
     <Container bgColor={bgColor}>
       {name === "add-list" ? (
@@ -116,6 +125,7 @@ export default function CardToAdd({
           placeholder={placeholder}
           contentEditable={true}
           onInput={(e) => setTitle(e.target.innerHTML)}
+          onKeyPress={(e) => onKeyPress(e)}
         />
       )}
       <Action>
