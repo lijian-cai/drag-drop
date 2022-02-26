@@ -57,6 +57,7 @@ export default function Dashboard() {
   };
 
   const onColumnAdd = (title) => {
+    if(!title) return;
     const newColumn = { id: columns.length + 1, title: title };
     setColumns([...columns, newColumn]);
   };

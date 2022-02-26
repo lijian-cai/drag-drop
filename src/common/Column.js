@@ -73,6 +73,7 @@ export default function Column({ id, title, onTitleEdit }) {
   const [cards, setCards] = useState([]);
 
   const onCardAdd = (title) => {
+    if(!title) return;
     const newCard = { id: cards.length + 1, title: title };
     setCards([...cards, newCard]);
     setIsAdding(false);
